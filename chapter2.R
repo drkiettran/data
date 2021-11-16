@@ -16,12 +16,11 @@ install.packages("ggcorrplot")
 # 2.1 The Iris Dataset
 
 library(tidyverse)
-data(iris)
-iris <- as_tibble(iris)
+data(iris) # This loads the dataset automatically.
+iris <- as_tibble(iris) 
 iris
-
-print(iris, n = 3, width = Inf)
 str(iris)
+
 # four (4) features(Sepal.Length, Sepal.Width, Pedal.Length, Pedal.Width), and 
 #  one (1) label (`Species`)
 
@@ -30,6 +29,20 @@ print(iris, n = 3, width = Inf) # `Inf` -> infinity.
 # 2.2 Data Quality
 ## Assessing data quality via `summary` function
 summary(iris)
+
+## Transpose first column into a matrix
+str(t(iris[,1]))
+quantile(t(iris[,1]))
+
+## first quantile [4.3, 5.1]
+## second quantile [5.1, 5.8]
+## third quantile [5.8, 6.4]
+## fourth quantile [6.4, 7.9]
+
+## 0%  25%  50%  75% 100% 
+## 4.3  5.1  5.8  6.4  7.9 
+
+t(iris[,5])
 
 # Summary `specific` columns: In this case excluding non-numeric.
 iris %>% summarize_if(is.numeric, mean)
